@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todoey_app/widgets/task_checkbox.dart';
 
 class MyTaskList extends StatelessWidget {
   const MyTaskList({Key? key}) : super(key: key);
@@ -7,20 +8,12 @@ class MyTaskList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        CheckboxListTile(
-          value: false,
-          title: Text('Comprar arroz'),
-          onChanged: (value) {},
+        MyTaskCheckbox(task: 'Comprar arroz'),
+        MyTaskCheckbox(
+          task: 'Comprar feijão',
         ),
-        CheckboxListTile(
-          value: false,
-          title: Text('Comprar feijão'),
-          onChanged: (value) {},
-        ),
-        CheckboxListTile(
-          value: false,
-          title: Text('Comprar açaí'),
-          onChanged: (value) {},
+        MyTaskCheckbox(
+          task: 'Comprar açaí',
         ),
       ],
     );
