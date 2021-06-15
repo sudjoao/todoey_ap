@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todoey_app/screens/add_task_screen.dart';
 import 'package:todoey_app/widgets/task_list.dart';
 
 class MyTasksScreen extends StatefulWidget {
@@ -13,7 +14,19 @@ class _MyTasksScreenState extends State<MyTasksScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          showModalBottomSheet(
+            isScrollControlled: true,
+            context: context,
+            builder: (context) => SingleChildScrollView(
+              child: Container(
+                padding: EdgeInsets.only(
+                    bottom: MediaQuery.of(context).viewInsets.bottom),
+                child: MyAddTaskScreen(),
+              ),
+            ),
+          );
+        },
         child: Icon(
           Icons.add,
           color: Colors.white,
@@ -26,40 +39,37 @@ class _MyTasksScreenState extends State<MyTasksScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Expanded(
-                flex: 2,
-                child: Container(
-                  padding: EdgeInsets.all(32.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      CircleAvatar(
-                        child: Icon(
-                          Icons.list,
-                          color: Colors.lightBlueAccent,
-                          size: 48,
-                        ),
-                        backgroundColor: Colors.white,
-                        radius: 32,
+              Container(
+                padding: EdgeInsets.all(32.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    CircleAvatar(
+                      child: Icon(
+                        Icons.list,
+                        color: Colors.lightBlueAccent,
+                        size: 48,
                       ),
-                      Text(
-                        'Todoey',
-                        style: TextStyle(
-                          fontSize: 50,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w700,
-                        ),
+                      backgroundColor: Colors.white,
+                      radius: 32,
+                    ),
+                    Text(
+                      'Todoey',
+                      style: TextStyle(
+                        fontSize: 50,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w700,
                       ),
-                      Text(
-                        '12 tasks',
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.white,
-                        ),
+                    ),
+                    Text(
+                      '12 tasks',
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.white,
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
               Expanded(
